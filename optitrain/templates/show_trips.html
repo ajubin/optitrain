@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
+      <dl>
+        <dt>email
+        <dd><input type="email" size="30" name="email">
+        <dt>Ville de départ
+        <dd><input type="text" size="30" name="origin">
+        <dt>Ville d'arrivée
+        <dd><input type="text" size="30" name="dest">
+        <dt>Date
+        <dd><input type="text" size="30" name="trip_date">
+        <dd><input type="submit" value="Share">
+      </dl>
+    </form>
+  {% endif %}
+  <ul class="entries">
+  {% for entry in entries %}
+    <li>{{ entry.email|safe }} | {{ entry.origin|safe }} | {{ entry.dest|safe }} | {{ entry.trip_date|safe }}</li>
+  {% else %}
+    <li><em>Unbelievable.  No trips here so far</em></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

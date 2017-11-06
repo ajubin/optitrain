@@ -1,0 +1,3 @@
+graft optitrain/templates
+graft optitrain/static
+include optitrain/schema.sql
